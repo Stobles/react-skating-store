@@ -2,7 +2,7 @@ import SectionWrapper from '@comp/HOC/SectionWrapper';
 import { Link, useNavigate } from 'react-router-dom';
 import { BsTag } from 'react-icons/bs';
 import Image from '@comp/UI/Image';
-import { blogChair, blogComputer, blogGuide, blogModern } from '@assets';
+import { skates, skatesCare, skatesSize, costume } from '@assets';
 import styles from './Blog.module.scss';
 
 const BlogCard = ({ src, category, date, blogId, title }) => {
@@ -35,27 +35,27 @@ const Blog = () => (
   <div className={styles.Inner}>
     <ul className={styles.Cards}>
       <BlogCard
-        src={blogGuide}
-        category='Furniture'
-        title='Buying best minimal computer table'
+        src={skatesCare}
+        category='Коньки'
+        title='Коньки фигурные – советы по уходу'
         blogId='12'
       />
       <BlogCard
-        src={blogComputer}
-        category='Furniture'
-        title='Buying best minimal computer table'
+        src={skatesSize}
+        category='Коньки'
+        title='Как подобрать размер фигурных коньков'
         blogId='12'
       />
       <BlogCard
-        src={blogModern}
-        category='Furniture'
-        title='Buying best minimal computer table'
+        src={skates}
+        category='Коньки'
+        title='Где изобрели коньки'
         blogId='12'
       />
       <BlogCard
-        src={blogChair}
-        category='Furniture'
-        title='Buying best minimal computer table'
+        src={costume}
+        category='Костюмы'
+        title='Женские костюмы для фигурного катания'
         blogId='12'
       />
     </ul>

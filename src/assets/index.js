@@ -9,11 +9,10 @@ import slide from './images/slider/slide.png';
 import categorySkates from './images/category/skates.png';
 import categorySale from './images/category/sale.png';
 import categoryBags from './images/category/bags.png';
-import blogGuide from './images/blog/blogGuide.png';
-import blogComputer from './images/blog/blogComputer.png';
-import blogModern from './images/blog/blogModern.png';
-import blogChair from './images/blog/blogChair.png';
-import blogTest from './images/blog/blogTest.jpg';
+import costume from './images/blog/costume.jpg';
+import skatesSize from './images/blog/skatesSize.jpg';
+import skates from './images/blog/skates.jpg';
+import skatesCare from './images/blog/skatesCare.jpg';
 import loginImage from './images/loginImage.png';
 
 export {
@@ -28,10 +27,9 @@ export {
   categorySkates,
   categorySale,
   categoryBags,
-  blogChair,
-  blogComputer,
-  blogGuide,
-  blogModern,
-  blogTest,
+  costume,
+  skatesSize,
+  skates,
+  skatesCare,
   loginImage,
 };

@@ -2,6 +2,23 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './Basket.module.scss';
+import Image from '../../components/UI/Image';
+
+const BasketProduct = ({ product }) => (
+  <div className={styles.Product}>
+    <div className={styles.ImageWrapper}>
+      <Image className={styles.Image} alt='basket_product_image' />
+    </div>
+    <div>
+      <span className={styles.Category}>БОТИНКИ</span>
+      <h3 className={styles.Name}>Коньки Jackson Freestyle Белые</h3>
+    </div>
+    <div className={styles.Size}>36</div>
+    <div className={styles.Price}>2000 руб.</div>
+    <div className={styles.Quantity}>1 шт.</div>
+    <div className={styles.Price}>2000 руб.</div>
+  </div>
+);
 
 const Basket = () => {
   const dispatch = useDispatch();
@@ -22,11 +39,11 @@ const Basket = () => {
               <li className={styles.Quantity}>Количество</li>
               <li className={styles.Total}>Всего</li>
             </ul>
-            <div className={styles.Products}>
-              
-            </div>
+            <BasketProduct />
+            <BasketProduct />
+            <BasketProduct />
           </div>
-          <div className={styles.Info}></div>
+          <div className={styles.Info} />
         </div>
       </div>
     </div>
