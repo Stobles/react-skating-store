@@ -1,0 +1,14 @@
+@import '@styles/variables.scss';
+
+.swiper-pagination-bullet{
+  margin: 0 8px!important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 20px!important;
+  border-radius: 50px!important;
+
+  transition: .3s width ease;
+
+  background-color: $deep-blue-color!important;
+}

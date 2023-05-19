@@ -1,0 +1,19 @@
+@import '@styles/variables.scss';
+@import '@styles/help.scss';
+
+.Logo{
+  font-family: $font-family-secondary;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.LogoImg{
+  width: 50px;
+  object-fit: contain;
+}
+
+.LogoText{
+  composes: Title-24;
+  font-weight: 500;
+}

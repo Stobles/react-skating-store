@@ -1,0 +1,11 @@
+@import '@styles/variables.scss';
+
+.Filters{
+  display: flex;
+  gap: 15px;
+
+  @media screen and (max-width: $mobile + px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}

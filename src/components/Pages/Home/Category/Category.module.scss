@@ -1,0 +1,79 @@
+@import '@styles/variables.scss';
+@import '@styles/help.scss';
+
+.Categoryes{
+  display: grid;
+  grid-template-columns: minmax(400px, 690px) minmax(300px, 490px);
+  grid-template-rows: repeat(2, 250px);
+  gap: 20px;
+
+  @media screen and (max-width: $tablet + px) {
+    grid-template-columns: minmax(250px, 600px);
+    grid-template-rows: repeat(3, 250px);
+    justify-content: center;
+  }
+}
+
+.Category{
+  position: relative;
+  padding: 45px 0 0 25px;
+
+  .Content{
+    max-width: 220px;
+  }
+}
+
+.CategoryFull{
+  @media screen and (min-width: $tablet + px) {
+    grid-row: 1/3;
+
+    .Content{
+      max-width: 375px;
+    }
+  }
+}
+
+.ImageWrapper{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  z-index: -1;
+}
+
+.Image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.Title{
+  font-size: 22px;
+  composes: truncate-3;
+  margin: 0;
+
+  @media screen and (max-width: $mobile + px) {
+    font-size: 16px;
+  }
+}
+
+.Text{
+  font-size: 20px;
+  composes: truncate-3;
+  color: $deep-blue-color;
+  font-weight: 600;
+
+  @media screen and (max-width: $mobile + px) {
+    font-size: 16px;
+  }
+}
+
+.Link{
+  position: relative;
+  display: flex;
+  align-items: center;
+
+}

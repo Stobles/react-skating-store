@@ -1,0 +1,23 @@
+@import '@styles/variables.scss';
+
+.List{
+  width: 100%;
+  margin: 0;
+  text-align: start;
+}
+
+.Paragraph{
+  color: $main-text-color;
+  background-color: $background-color;
+
+  cursor: pointer;
+  &:not(:last-child){
+    border-bottom: 1px solid $light-text-color;
+  }
+}
+
+.Link{
+  display: block;
+  width: 100%;
+  padding: 12px 30px;
+}

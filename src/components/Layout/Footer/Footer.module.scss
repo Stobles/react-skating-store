@@ -1,0 +1,93 @@
+@import '@styles/variables.scss';
+@import '@styles/help.scss';
+
+.Footer{
+  font-family: $font-family-secondary;
+
+  @media screen and (max-width: $mobile + px) {
+    margin-bottom: $bar-height + px;
+  }
+}
+
+.Inner{
+  display: flex;
+  align-items: center;
+
+  padding: 40px 0px;
+
+  @media screen and (max-width: $tablet + px) {
+    flex-direction: column;
+  }
+}
+
+.Info{
+  @media screen and (min-width: $mobile + px) {
+    max-width: 320px;
+  }
+
+  margin-right: 80px;
+
+  @media screen and (max-width: $tablet + px) {
+    display: flex;
+    align-items: center;
+    flex-direction: inherit;
+    text-align: center;
+
+    margin: 0 0 10px 0;
+  }
+
+  @media screen and (max-width: $mobile + px) {
+    align-items: flex-start;
+    text-align: start;
+  }
+}
+
+
+
+.Paragraph{
+  composes: Title-16-32;
+
+  margin: 0;
+}
+
+.List{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+
+  @media screen and (max-width: $tablet + px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  @media screen and (max-width: $tablet + px) and (min-width: $mobile + px) {
+    align-items: center;
+  }
+}
+
+.Item{
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: $tablet + px) and (min-width: $mobile + px) {
+    align-items: inherit;
+    text-align: center;
+  }
+  
+  @media screen and (min-width: $tablet + px) {
+    &:not(:last-child){
+      margin-right: 20px;
+    }
+  }
+}
+
+.Title{
+  composes: Title-18-40;
+  font-weight: 500;
+  margin: 0;
+}
+
+.Link{
+  composes: Title-18-40;
+}

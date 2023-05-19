@@ -1,0 +1,242 @@
+@import '@styles/variables.scss';
+@import '@styles/help.scss';
+
+$title-font-size: 36;
+$title-mobile-font-size: 28;
+$category-font-size: 22;
+$category-mobile-font-size: 18;
+$new-price-font-size: 32;
+$old-price-font-size: 26;
+$plug-gradient: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0) 100%);
+
+.Inner{
+  font-family: $font-family-secondary;
+  display: flex;
+  gap: 60px;
+
+  margin: 40px 0;
+
+  @media screen and (max-width: $tablet + px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.ImageWrapper{
+  height: 500px;
+
+  @media screen and (min-width: $tablet + px) {
+    flex: 0 1 40%;
+  }
+
+  @media screen and (max-width: $mobile-mini + px) {
+    height: 300px;
+  }
+}
+
+.Image{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.Content{
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 60%;
+
+  @media screen and (max-width: $tablet + px) and (min-width: $mobile + px) {
+    align-items: center;
+  }
+}
+
+.Title{
+  position: relative;
+  width: 100%;
+  min-height: $title-font-size + px;
+  font-size: $title-font-size + px;
+  color: $dark-text-color;
+  margin: 0 0 10px 0;
+
+  font-weight: 500;
+
+  @media screen and (max-width: $tablet + px) and (min-width: $mobile + px) {
+    text-align: center;
+  }
+
+  @media screen and (max-width: $mobile + px) {
+    font-size: $title-mobile-font-size + px;
+  }
+
+  &.Plug{
+    &::after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $background-color;
+
+      margin-bottom: $title-font-size + 15 + px;
+    }
+
+    &::before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background: $plug-gradient;
+
+      animation: plugAnimation 2s infinite;
+
+      z-index: 2;
+    }
+  }
+}
+
+.Category{
+  position: relative;
+  max-width: 250px;
+  font-size: $category-font-size + px;
+  min-height: $category-font-size + px;
+  font-weight: 500;
+  color: $medium-text-color;
+  text-transform: uppercase;
+
+  margin: 0;
+
+  @media screen and (max-width: $mobile + px) {
+    font-size: $category-mobile-font-size + px;
+  }
+
+  &.Plug{
+    &::after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: $category-font-size + px;
+      background-color: $background-color;
+      z-index: 1;
+    }
+
+    &::before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: $category-font-size + px;
+      background: $plug-gradient;
+
+      animation: plugAnimation 2s infinite;
+
+      z-index: 2;
+    }
+  }
+  
+}
+
+.Select{
+  width: min-content;
+  margin: 30px 0;
+  border-radius: 5px;
+}
+
+.Prices{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 200px;
+  font-size: $new-price-font-size + px;
+  font-weight: 500;
+
+  margin: auto 0 20px 0;
+
+  .New{
+    position: relative;
+    color: $deep-blue-color;
+    min-height: $new-price-font-size + px;
+
+    &.Plug{
+      &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $background-color;
+  
+        margin-bottom: $title-font-size + 15 + px;
+      }
+  
+      &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: $plug-gradient;
+  
+        animation: plugAnimation 2s infinite;
+  
+        z-index: 2;
+      }
+    }
+  }
+
+  .Old{
+    position: relative;
+    font-size: $old-price-font-size + px;
+    min-height: $old-price-font-size + px;
+    text-decoration: line-through;
+    color: $medium-light-text-color;
+
+    &.Plug{
+      &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $background-color;
+  
+        margin-bottom: $title-font-size + 15 + px;
+      }
+  
+      &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: $plug-gradient;
+  
+        animation: plugAnimation 2s infinite;
+  
+        z-index: 2;
+      }
+    }
+  }
+}
+
+@keyframes plugAnimation {
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}

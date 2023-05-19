@@ -1,0 +1,50 @@
+@import '@styles/variables.scss';
+
+$margin: 18;
+$input-font-size: 16;
+$input-mobile-font-size: 14;
+$border-color: #C2C2C2;
+
+.Paragraph{
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: calc($margin / 3) + px;
+}
+
+.Title{
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.Wrapper{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 45px;
+  border: 1px solid $border-color;
+
+  border-radius: 8px;
+  overflow: hidden;
+
+  padding: 0 10px;
+}
+
+.Input{
+  font-size: $input-font-size + px;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  outline: none;
+
+  padding: 5px 0;
+
+  @media screen and (max-width: $mobile + px){
+    font-size: $input-mobile-font-size + px;
+    padding: 0;
+  }
+}
+
+.Err{
+  color: $error-text-color;
+}

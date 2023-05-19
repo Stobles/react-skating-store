@@ -1,0 +1,81 @@
+@import '@styles/variables.scss';
+@import '@styles/help.scss';
+
+.Header{
+  font-family: $font-family-secondary;
+}
+
+.Inner{
+  display: flex;
+  align-items: center;
+
+  padding: 20px 0px;
+
+  @media screen and (max-width: $tablet + px){
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: $tablet-mini + px){
+    padding: 10px 0px;
+  }
+}
+
+.Logo{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  margin-right: 20px;
+
+  @media screen and (min-width: $tablet + px){
+    flex: 0 1 260px;
+    margin-right: 0px;
+  }
+}
+
+.LogoImg{
+  width: 50px;
+  object-fit: contain;
+}
+
+.LogoText{
+  composes: Title-24;
+  font-weight: 500;
+
+  @media screen and (max-width: $mobile-mini + px){
+    display: none;
+  }
+}
+
+.Searchbar{
+  flex: 1;
+  margin-right: 20px;
+
+  @media screen and (max-width: $tablet + px){
+    display: flex;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: $mobile + px){
+    display: none;
+  }
+}
+
+.Buttons{
+  display: flex;
+  gap: 12px;
+}
+
+.Link{
+  height: 25px;
+
+  @media screen and (max-width: $mobile + px) {
+    display: none;
+  }
+}
+
+.Burger{
+  @media screen and (min-width: $tablet + px) {
+    display: none;
+  }
+}

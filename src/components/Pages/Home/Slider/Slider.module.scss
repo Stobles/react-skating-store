@@ -1,0 +1,117 @@
+@import '@styles/help.scss';
+
+$slider-background-color: linear-gradient(103.4deg, rgba(241, 250, 255, 0.88) 0.89%, #F1FAFF 101.61%);
+
+.Swiper{
+  height: 440px;
+
+  cursor: grab;
+
+  @media screen and (max-width: $tablet + px) {
+    height: 730px;
+  }
+
+  @media screen and (max-width: $mobile-mini + px) {
+    height: 600px;
+  }
+}
+
+.SliderInner{
+  display: flex;
+  align-items: center;
+  padding: 60px;
+  margin-top: 15px;
+
+  height: 100%;
+
+  background: $slider-background-color;
+
+  @media screen and (max-width: $tablet + px) {
+    flex-direction: column-reverse;
+    padding: 30px;
+  }
+
+  @media screen and (max-width: $mobile + px) {
+    margin-top: 0;
+  }
+}
+
+.Content{
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 40%;
+
+  @media screen and (max-width: $tablet + px) {
+    margin-bottom: 30px;
+    flex: 1;
+  }
+}
+
+.Title{
+  composes: truncate-2;
+  composes: MainTitle;
+  color: $dark-text-color;
+  margin: 0;
+
+  @media screen and (max-width: $tablet + px) {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  @media screen and (max-width: $mobile + px) {
+    font-size: 22px;
+    line-height: 26px;
+  }
+}
+
+.Subtitle{
+  font-size: 22px;
+  composes: truncate-2;
+  text-transform: uppercase;
+  margin: 0 0 10px 0;
+  color: $blue-color;
+
+  @media screen and (max-width: $tablet + px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: $mobile + px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+.Text{
+  font-size: 26px;
+  composes: truncate-2;
+  margin-bottom: 60px;
+  color: $medium-text-color;
+  font-weight: 600;
+
+  @media screen and (max-width: $tablet + px) {
+    font-size: 22px;
+
+    margin-bottom: 30px;
+  }
+
+  @media screen and (max-width: $mobile + px) {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+.ImageWrapper{
+  height: 100%;
+  flex: 0 1 60%;
+
+  @media screen and (max-width: $tablet + px) {
+    margin-bottom: 50px;
+  }
+}
+
+.Image{
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: contain;
+}

@@ -1,0 +1,132 @@
+@import '@styles/variables.scss';
+@import '@styles/help.scss';
+
+.Section{
+  background-color: $background-color;
+
+  @media screen and (max-width: $mobile + px) {
+    display: none;
+  }
+}
+
+.Inner{
+  display: flex;
+  min-height: 40px;
+
+  @media screen and (min-width: $tablet + px) {
+    min-height: 65px;
+  }
+}
+
+.MenuWrapper{
+  position: relative;
+  flex: 0 0 260px;
+
+  @media screen and (max-width: $tablet + px) {
+    display: none;
+  }
+}
+
+.Decoration{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  
+  padding-left: 30px;
+  background-color: $blue-color;
+  color: $white-text-color;
+
+  border: 2px solid $blue-color;
+
+  transition: .3s background-color ease, .3s color ease;
+
+  @media screen and (any-hover: hover) {
+    &:hover{
+      color: $blue-color;
+      background-color: $blue-hover-color;
+    }
+  }
+}
+
+.Menu{
+  $menu-paragraph-height: 41;
+
+  position: absolute;
+  max-height: 0;
+  overflow: hidden;
+  top: 105%;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  margin-top: 5px;
+  transition: .5s max-height ease-in-out;
+  box-shadow: 0px 10px 15px 2px rgba(0,0,0,0.1);
+
+  &.Active{
+    max-height: $menu-paragraph-height * 8 + px;
+  }
+}
+
+.Title{
+  font-family: $font-family-secondary;
+  margin-left: 21px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.Navbar{
+  width: 100%;
+}
+
+.List{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 0 0 65px;
+  height: 100%;
+
+  @media screen and (max-width: $tablet + px) {
+    width: 100%;
+    margin: 0;
+    justify-content: center;
+  }
+
+  &.Login{
+    width: 100%;
+    margin: 0;
+    justify-content: center;
+  }
+}
+
+.Link{
+  position: relative;
+  text-transform: uppercase;
+  transition: .3s color ease;
+
+  &::after{
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $blue-color;
+    opacity: 0;
+    
+    transition: .3s opacity ease;
+  }
+  &:not(:last-child){
+    margin-right: 47px;
+  }
+
+  @media screen and (any-hover: hover) {
+    &:hover{
+      color: $blue-color;
+
+      &::after{
+        opacity: 1;
+      }
+    }
+  }
+}

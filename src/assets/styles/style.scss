@@ -1,0 +1,63 @@
+@import './help.scss';
+@import './variables.scss';
+@import 'normalize-scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&family=Rubik:wght@400;500&display=swap');
+
+*,
+*::after,
+*::before{
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(116, 190, 255, 0.1);
+}
+
+html{
+  height: 100%;
+}
+
+button{
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+ul{
+  padding: 0;
+  list-style: none;
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
+body{
+  overflow-x: hidden;
+  height: 100%;
+  font-family: $font-family;
+  font-size: $font-size + px;
+  margin: 0;
+  padding: 0;
+
+  color: $main-text-color;
+}
+
+#root{
+  height: 100%;
+}
+
+.wrapper{
+  min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.main{
+  flex: 1;
+}
+
+.active{
+  color: $special-blue-color;
+}

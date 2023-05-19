@@ -1,0 +1,28 @@
+@import '@styles/variables.scss';
+
+.Loader{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $background-white-color;
+
+  z-index: 20;
+}
+
+.LoaderEnterDone {
+  opacity: 1;
+}
+.LoaderEnterActive {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+.LoaderExit {
+  opacity: 0;
+}
+.LoaderExitActive {
+  opacity: 0;
+  transition: opacity 300ms;
+}

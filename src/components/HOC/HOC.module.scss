@@ -1,0 +1,17 @@
+@import '@styles/help.scss';
+
+.SectionWrapper{
+  margin-bottom: 70px;
+}
+
+.SectionWrapperWithTitle{
+  margin-bottom: 130px;
+}
+
+.SectionWrapperTitle{
+  composes: MainTitle;
+  text-transform: uppercase;
+  text-align: center;
+
+  margin-bottom: 50px;
+}

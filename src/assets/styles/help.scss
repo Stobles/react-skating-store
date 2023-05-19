@@ -1,0 +1,95 @@
+@import './variables.scss';
+
+.Container{
+  width: 100%;
+  max-width: $container-max-width + px;
+  padding: 0 calc($container-padding / 2) + px;
+  margin: 0 auto;
+}
+
+.MainTitle{
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 45px;
+}
+
+.truncate-3{
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.truncate-2{
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.truncate{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.Title-39 {
+  font-size: 39px;
+  line-height: 48px;
+}
+
+.Title-24 {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.Title-22 {
+  font-size: 22px;
+  line-height: 26px;
+}
+
+.Title-20 {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.Title-18{
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.Title-18-40{
+  font-size: 18px;
+  line-height: 40px;
+}
+
+
+.Title-16-32 {
+  font-size: 16px;
+  line-height: 32px;
+}
+
+.Title-16-26 {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.Title-16 {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.Title-12 {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.Text-26{
+  font-size: 26px;
+  line-height: 26px;
+}
+
+.Text-16 {
+  font-size: 16px;
+  line-height: 18px;
+}

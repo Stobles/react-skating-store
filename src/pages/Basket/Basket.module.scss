@@ -1,0 +1,65 @@
+@import '@styles/help.scss';
+@import '@styles/variables.scss';
+
+$title-font-size: 24;
+$header-font-size: 18;
+
+.Inner{
+  font-family: $font-family-secondary;
+  padding: 20px 0;
+}
+
+.TitleWrapper{
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.Title{
+  font-size: $title-font-size + px;
+  color: $dark-text-color;
+  font-weight: 500;
+
+  margin: 0;
+}
+
+.Quantity{
+  font-size: 18px;
+  color: $medium-text-color;
+  font-weight: 500;
+
+  margin-bottom: 1px;
+}
+
+.Content{
+  display: flex;
+}
+
+.ProductsWrapper{
+  flex: 0 1 70%;
+}
+
+.Info{
+  flex: 0 1 30%;
+}
+
+.Header{
+  display: grid;
+  grid-template-columns: 120px 230px repeat(4, 1fr);
+  justify-items: center;
+  align-items: flex-end;
+
+  font-size: $header-font-size + px;
+  color: $dark-text-color;
+  font-weight: 500;
+
+  .Name{
+    justify-self: flex-start;
+    grid-column: span 2;
+  }
+
+  .Quantity {
+    font-size: $header-font-size + px;
+    color: $dark-text-color;
+  }
+}

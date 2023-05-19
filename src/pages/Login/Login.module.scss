@@ -1,0 +1,179 @@
+@import '@styles/variables.scss';
+@import '@styles/help.scss';
+
+$margin: 18;
+$border-color: #C2C2C2;
+$button-google-font-size: 16;
+$login-gap: 25;
+$login-padding: 35;
+$form-max-width: 500;
+$form-padding-x: 24;
+$form-padding-y: 48;
+
+.Login{
+  display: flex;
+  height: 100%;
+
+  gap: $login-gap + px;
+  padding: $login-padding + px;
+  
+  @media screen and (max-width: $tablet + px) {
+    padding: 0;
+  }
+}
+
+.FormWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 1 60%;
+  
+  @media screen and (max-width: $tablet + px) {
+    flex: 1;
+  }
+}
+
+.Form{
+  width: 100%;
+  
+  padding: $form-padding-y + px $form-padding-x + px;
+
+  background-color: $background-white-color;
+  box-shadow: 4px 4px 30px rgba(84, 84, 84, 0.1);
+  border-radius: 8px;
+
+  @media screen and (max-width: $tablet-mini + px) {
+    padding: calc($form-padding-y / 2) + px $form-padding-x + px;
+  }
+
+  @media screen and (max-width: $mobile + px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  @media screen and (min-width: $mobile + px) {
+    max-width: $form-max-width + px;
+  }
+}
+
+.Title{
+  composes: Title-20;
+  text-align: center;
+  color: $dark-text-color;
+
+  margin: 0 0 $margin + px 0;
+
+  @media screen and (min-width: $mobile + px) {
+    margin: 0 0 calc($margin / 2) + px 0;
+  }
+}
+
+.Button{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+  font-family: $font-family;
+  font-size: $button-google-font-size + px;
+  font-weight: 600;
+  width: 100%;
+  border: 1px solid $border-color;
+  padding: 8px 0px;
+
+  border-radius: 8px;
+
+  margin-bottom: $margin + px;
+
+  @media screen and (max-width: $mobile + px){
+    margin-bottom: calc($margin / 2) + px;
+  }
+}
+
+.Separator{
+  display: flex;
+  align-items: center;
+
+  margin-bottom: $margin + px;
+
+  &::before{
+    content: '';
+    position: relative;
+    top: 2px;
+    width: 100%;
+    height: 1px;
+    background-color: $border-color;
+  }
+
+  &::after{
+    content: '';
+    position: relative;
+    top: 2px;
+    width: 100%;
+    height: 1px;
+    background-color: $border-color;
+  }
+
+  @media screen and (max-width: $mobile + px){
+    margin-bottom: calc($margin / 2) + px;
+  }
+}
+
+.SeparatorText{
+  font-weight: 600;
+  margin: 0 20px;
+}
+
+.Buttons{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  gap: calc($margin / 2) + px;
+}
+
+.Question{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: $margin + px;
+}
+
+.ChangeButton{
+  position: relative;
+  font-family: $font-family;
+  font-weight: 700;
+
+  &::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 2px;
+    background-color: $blue-color;
+
+    opacity: 0;
+
+    transition: .2s opacity ease;
+  }
+
+  @media screen and (any-hover: hover) {
+    &:hover{
+      &::after{
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.Image{
+  border-radius: 20px;
+  overflow: hidden;
+  flex: 0 1 40%;
+
+  @media screen and (max-width: $tablet + px) {
+    display: none;
+  }
+}

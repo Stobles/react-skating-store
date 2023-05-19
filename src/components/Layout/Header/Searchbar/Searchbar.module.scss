@@ -1,0 +1,69 @@
+@import '@styles/variables.scss';
+@import '@styles/help.scss';
+
+.Form{
+  display: flex;
+  align-items: center;
+
+  border: 2px solid $blue-color;
+
+  border-radius: 7px;
+
+  width: 100%;
+  max-width: 580px;
+  height: 43px;
+
+  padding-left: 20px;
+
+  @media screen and (max-width: $tablet-mini + px) {
+    height: 35px;
+  }
+}
+
+.Input{
+  width: 100%;
+  font-family: $font-family-secondary;
+  font-size: 15px;
+  outline: none;
+
+  border: 0;
+
+  &::placeholder{
+    color: $light-text-color;
+  }
+}
+
+.Submit{
+  height: 100%;
+  border: 0;
+  border-left: 2px solid $blue-color;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: $blue-color;
+  padding: 0px 18px;
+
+  transition: .2s background-color ease;
+
+  cursor: pointer;
+
+  @media (any-hover: hover) {
+    &:hover{
+      background-color: $blue-hover-color;
+      .Icon{
+        color: $blue-color;
+      }
+    }
+  }
+
+  @media screen and (max-width: $tablet-mini + px) {
+    padding: 0px 10px;
+  }
+
+  .Icon{
+    width: 18px;
+    height: 18px;
+    color: $white-text-color;
+
+    transition: .2s color ease;
+  }
+}
