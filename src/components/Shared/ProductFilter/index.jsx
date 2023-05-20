@@ -24,7 +24,7 @@ const ProductsFilter = ({ options, filter, setFilter }) => (
       placeholder='Категория'
       options={options}
       styles={categoryStylesSelect}
-      onChange={(selectedOption) => setFilter({ ...filter, category: selectedOption.value })}
+      onChange={(e) => setFilter({ ...filter, category: e.value })}
     />
     <Select
       placeholder='Сортировка'

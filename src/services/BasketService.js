@@ -14,10 +14,10 @@ export default class BasketService {
     const basketUserRef = doc(db, 'basket', id);
     const basketQuery = query(basketUserRef);
     const basketItems = (await getDoc(basketQuery)).data().products;
-    const isRepeat = basketItems.find((item) => item.id === product.id);
+    const isRepeat = basketItems.find((item) => item.id === product.id && item.size === product.size);
     if (isRepeat) {
       const basketItemsNew = basketItems.map((item) => {
-        if (item.id === product.id) item.amount += 1;
+        if (item.id === product.id && item.size === product.size) item.amount += 1;
         return item;
       });
       await updateDoc(basketUserRef, {
@@ -25,7 +25,6 @@ export default class BasketService {
       });
       return;
     }
-    console.log('буба');
     await updateDoc(basketUserRef, {
       products: arrayUnion(product),
     });

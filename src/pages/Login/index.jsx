@@ -17,7 +17,7 @@ import {
 import { useToastifyMessage } from '@hooks/useToastifyMessage';
 import { fetchAllBasket } from '@thunks/fetchBasket';
 import styles from './Login.module.scss';
-import { FormInput } from './FormInput';
+import { FormInput } from '../../components/UI/FormInput';
 
 const registerSchema = yup.object().shape({
   firstName: yup.string().required('Введите значение'),

@@ -1,0 +1,28 @@
+@import '@styles/variables.scss';
+
+.Pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.Buttons{
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.Button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  background-color: $deep-blue-color;
+
+  color: $white-text-color;
+
+  &.Disabled{
+    opacity: .6;
+  }
+}

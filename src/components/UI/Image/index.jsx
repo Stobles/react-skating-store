@@ -5,9 +5,6 @@ import styles from './Image.module.scss';
 
 const Image = ({ className, src, alt }) => {
   const imageLoaded = useImagePreload(src);
-
-  
-
   return (
     <>
       {imageLoaded ? (

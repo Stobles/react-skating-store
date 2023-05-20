@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useFetching } from '@hooks/useFetching';
 import ProductService from '@services/ProductService';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from '@comp/UI/Image';
 import Button from '@comp/UI/Button';
 import Select from 'react-select';
@@ -29,9 +29,10 @@ const Product = () => {
   const [size, setSize] = useState('');
   const [sizeOptions, setSizeOptions] = useState([]);
   const [fetchProduct, isLoading, error] = useFetching(async (uid) => {
-    const response = await ProductService.getProductById(uid);
+    const response = await ProductService.getById(uid);
     setProduct(response);
-    setSizeOptions(response.sizes);
+    setSizeOptions([...response.sizes]);
+    console.log(sizeOptions);
   });
 
   useEffect(() => {
@@ -44,7 +45,6 @@ const Product = () => {
       productBasket.id = id;
       productBasket.size = size;
       productBasket.amount = amount;
-      console.log(productBasket);
       dispatch(fetchAddToBasket(productBasket, user.id));
     } else {
       toast.warning('Выберите размер');

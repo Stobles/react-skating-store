@@ -23,6 +23,7 @@ const PasswordIcon = ({ type, handleChangePassword, handleChangeText }) => (
 
 export const FormInput = ({
   title,
+  placeholder,
   name,
   type,
   handleChange,
@@ -46,6 +47,7 @@ export const FormInput = ({
       <div className={styles.Wrapper}>
         <input
           type={inputType}
+          placeholder={placeholder}
           name={name}
           autoComplete='off'
           onChange={handleChange}

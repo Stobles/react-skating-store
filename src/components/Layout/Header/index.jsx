@@ -21,9 +21,9 @@ const Header = () => {
           <div className={styles.Logo}>
             <Logo />
           </div>
-          <div className={styles.Searchbar}>
+          {/* <div className={styles.Searchbar}>
             <Searchbar options={options} />
-          </div>
+          </div> */}
           <div className={styles.Buttons}>
             {user && (
               <Link to='/cart' className={styles.Link}>

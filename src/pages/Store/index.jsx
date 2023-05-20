@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import ProductList from '@comp/Shared/ProductList';
 import { useState, useEffect } from 'react';
 import { useFetching } from '@hooks/useFetching';
@@ -6,9 +7,9 @@ import { toast } from 'react-toastify';
 import Loader from '@comp/UI/Loader';
 import ProductsFilter from '@comp/Shared/ProductFilter';
 import { useParams } from 'react-router-dom';
-import styles from './Store.module.scss';
 import { usePosts } from '@hooks/usePosts';
 import Pagination from '@comp/UI/Pagination';
+import styles from './Store.module.scss';
 
 const options = [
   { value: '', label: 'Все' },
@@ -20,12 +21,36 @@ const options = [
 
 const Store = () => {
   const { filterProp } = useParams();
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState({ category: '', sort: '' });
-  const [fetchProducts, isLoading, error] = useFetching(async () => {
-    const response = await ProductService.getAllProducts();
-    setProducts([...response]);
-  });
+  const [fetchProducts, isLoading, error] = useFetching(
+    async (limit, item, type = '') => {
+      let response;
+      switch (type) {
+        case 'next':
+          response = await ProductService.getNext(limit, item);
+          if (response.length) {
+            setProducts([...response]);
+            setPage((prev) => prev + 1);
+          }
+          break;
+        case 'prev':
+          response = await ProductService.getPrev(limit, item);
+          if (response.length) {
+            setProducts([...response]);
+            setPage((prev) => prev - 1);
+          }
+          break;
+        default:
+          response = await ProductService.getAll(limit);
+          setProducts([...response.products]);
+          setTotalPages(Math.ceil(response.count / limit));
+          break;
+      }
+    },
+  );
   const sortedAndFilteredProducts = usePosts(
     products,
     filter.category,
@@ -33,8 +58,7 @@ const Store = () => {
   );
 
   useEffect(() => {
-    fetchProducts();
-
+    fetchProducts(4);
     if (filterProp) setFilter({ ...filter, category: filterProp });
   }, []);
 
@@ -56,7 +80,13 @@ const Store = () => {
           <Loader isLoading={isLoading} />
           <ProductList products={sortedAndFilteredProducts} />
           <div className={styles.Pagination}>
-            <Pagination  />
+            <Pagination
+              fetchProducts={fetchProducts}
+              products={products}
+              page={page}
+              setPage={setPage}
+              totalPages={totalPages}
+            />
           </div>
         </div>
       </div>

@@ -1,10 +1,36 @@
-import { query, getDocs, limit, getDoc, doc } from 'firebase/firestore';
+import {
+  query,
+  getDocs,
+  limit,
+  getDoc,
+  getCountFromServer,
+  doc,
+  startAfter,
+  orderBy,
+  endBefore,
+} from 'firebase/firestore';
 import { productsRef, db } from '../configs/firebase.config';
 
 export default class ProductService {
-  static async getAllProducts() {
+  static async getAll(lim) {
     const products = [];
-    const q = query(productsRef);
+    const q = query(productsRef, limit(lim), orderBy('name', 'asc'));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((document) => {
+      products.push({ id: document.id, ...document.data() });
+    });
+    const productsCount = await getCountFromServer(productsRef);
+    return { products, count: productsCount.data().count };
+  }
+
+  static async getNext(lim, item) {
+    const products = [];
+    const q = query(
+      productsRef,
+      limit(lim),
+      orderBy('name', 'asc'),
+      startAfter(item.name),
+    );
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((document) => {
       products.push({ id: document.id, ...document.data() });
@@ -12,9 +38,14 @@ export default class ProductService {
     return products;
   }
 
-  static async getProductsByLimit(lim = 8) {
+  static async getPrev(lim, item) {
     const products = [];
-    const q = query(productsRef, limit(lim));
+    const q = query(
+      productsRef,
+      limit(lim),
+      orderBy('name', 'asc'),
+      endBefore(item),
+    );
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((document) => {
       products.push({ id: document.id, ...document.data() });
@@ -22,7 +53,7 @@ export default class ProductService {
     return products;
   }
 
-  static async getProductById(id) {
+  static async getById(id) {
     const productIdRef = doc(db, 'products', id);
     const productSnap = await getDoc(productIdRef);
     return productSnap.data();

@@ -5,7 +5,6 @@ import { setBasket, setBasketProduct } from '../features/authSlice';
 export const fetchAllBasket = (id) => async (dispatch) => {
   try {
     const basket = await BasketService.getAllBasket(id);
-    console.log(basket);
     dispatch(setBasket(basket));
   } catch (e) {
     dispatch(setResponse({ status: e.code, message: e.message }));

@@ -1,0 +1,74 @@
+@import '@styles/variables.scss';
+
+$border-bg-color: #cecece;
+$border-input-color: #e0e0e0;
+
+.FormWrapper{
+  position: relative;
+  padding: 35px 30px;
+  border-radius: 3px;
+  background-color: $background-color;
+}
+
+.Loader{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: .6;
+
+  pointer-events: none;
+}
+
+.Total{
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+
+  border-bottom: 1px solid $border-bg-color;
+
+  .Text{
+    font-size: 18px;
+    font-weight: 500;
+    color: $dark-text-color;
+  }
+
+  .Price{
+    font-size: 16px;
+    font-weight: 500;
+    color: $blue-color;
+  }
+}
+
+.Products{
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+
+  margin-bottom: 15px;
+
+  .Text{
+    font-weight: 500;
+  }
+}
+
+.Form{
+  .InputWrapper{
+    margin-bottom: 15px;
+  }
+  
+  .Input{
+    width: 100%;
+    padding: 9px 10px;
+    border-radius: 3px;
+
+    border: 1px solid $border-bg-color;
+  }
+
+  .Err{
+    color: red;
+  }
+}

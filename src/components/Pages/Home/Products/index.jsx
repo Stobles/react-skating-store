@@ -12,9 +12,8 @@ const Products = () => {
   const productsLimit = 8;
   const [products, setProducts] = useState([]);
   const [fetchProducts, isLoading, error] = useFetching(async (limit) => {
-    const response = await ProductService.getProductsByLimit(limit);
-    setProducts([...response]);
-    console.log(response);
+    const response = await ProductService.getAll(limit);
+    setProducts([...response.products]);
   });
 
   useEffect(() => {
