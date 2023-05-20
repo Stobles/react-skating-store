@@ -4,6 +4,7 @@ const HOME_ROUTE = '/';
 const USER_ROUTE = '/user';
 const BASKET_ROUTE = '/cart';
 const STORE_ROUTE = '/store';
+const STORE_FILTER_ROUTE = '/store/:filterProp';
 const PRODUCT_ROUTE = '/product/:id';
 const ABOUT_ROUTE = '/about';
 const BLOG_ROUTE = '/blog';
@@ -16,6 +17,7 @@ export const routes = [
   { path: BLOG_ROUTE, Component: Blog },
   { path: HELP_ROUTE, Component: Help },
   { path: STORE_ROUTE, Component: Store },
+  { path: STORE_FILTER_ROUTE, Component: Store },
   { path: PRODUCT_ROUTE, Component: Product },
 ];
 
