@@ -10,10 +10,20 @@ $border-color: #dfdfdf;
   padding: 20px 0;
 }
 
+.HeaderWrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 10px;
+  width: 70%;
+  margin-bottom: 20px;
+}
+
 .TitleWrapper{
   display: flex;
   align-items: flex-end;
-  gap: 10px;
+
+  gap: 15px;
 }
 
 .Title{
@@ -38,10 +48,6 @@ $border-color: #dfdfdf;
 
 .ProductsWrapper{
   flex: 0 1 70%;
-}
-
-.Info{
-  flex: 0 1 30%;
 }
 
 .Header{
@@ -148,6 +154,10 @@ $border-color: #dfdfdf;
     align-self: center;
     justify-self: center;
   }
+}
+
+.Info{
+  flex: 0 1 30%;
 }
 
 .ContentEmpty{

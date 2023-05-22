@@ -2,8 +2,6 @@ import {
   query,
   getDoc,
   doc,
-  updateDoc,
-  arrayUnion,
   setDoc,
 } from 'firebase/firestore';
 import { db } from '../configs/firebase.config';
@@ -17,19 +15,13 @@ export default class OrderService {
     return res.products;
   }
 
-  static async addOrder(products, id, name, email) {
+  static async addOrder(order, id) {
     const orderUserRef = doc(db, 'orders', id);
+    const orderQuery = query(orderUserRef);
+    const { orders } = (await getDoc(orderQuery)).data();
+    orders.push(order);
     await setDoc(orderUserRef, {
-      orders: [],
-    });
-    const order = {
-      id: Date.now(),
-      name,
-      email,
-      products: [...products],
-    };
-    await updateDoc(orderUserRef, {
-      orders: arrayUnion(order),
+      orders: [...orders],
     });
   }
 }

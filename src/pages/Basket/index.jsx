@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import Image from '@comp/UI/Image';
 import Form from '@comp/Pages/Basket/Form';
+import Button from '@comp/UI/Button';
 import styles from './Basket.module.scss';
+import { fetchClearBasket } from '../../redux/thunks/fetchBasket';
 
 const BasketProduct = ({ product }) => (
   <div className={styles.Product}>
@@ -30,14 +31,27 @@ const BasketProduct = ({ product }) => (
 
 const Basket = () => {
   const dispatch = useDispatch();
-  const { basket } = useSelector((state) => state.auth);
+  const { user, basket } = useSelector((state) => state.auth);
+
+  const handleClearClick = () => {
+    dispatch(fetchClearBasket(user.id));
+  };
 
   return (
     <div className={styles.Container}>
       <div className={styles.Inner}>
-        <div className={styles.TitleWrapper}>
-          <h1 className={styles.Title}>Корзина</h1>
-          <span className={styles.Quantity}>Товаров - {basket.length}</span>
+        <div className={styles.HeaderWrapper}>
+          <div className={styles.TitleWrapper}>
+            <h1 className={styles.Title}>Корзина</h1>
+            <span className={styles.Quantity}>Товаров - {basket.length}</span>
+          </div>
+          {basket.length !== 0 && (
+            <div className={styles.Button}>
+              <Button isFull onClick={handleClearClick}>
+                Очистить
+              </Button>
+            </div>
+          )}
         </div>
         {basket.length ? (
           <div className={styles.Content}>
@@ -50,7 +64,10 @@ const Basket = () => {
               </ul>
               <div className={styles.Products}>
                 {basket.map((product) => (
-                  <BasketProduct key={`${product.id}${product.size}`} product={product} />
+                  <BasketProduct
+                    key={`${product.id}${product.size}`}
+                    product={product}
+                  />
                 ))}
               </div>
             </div>

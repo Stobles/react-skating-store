@@ -4,10 +4,10 @@ import { Login } from '../../pages';
 import MainLayout from '../Layout';
 import PrivateRoutes from './PrivateRoutes';
 
-const AppRouter = ({ isLoading }) => (
+const AppRouter = () => (
   <Routes>
     <Route path='/auth' element={<Login />} end />
-    <Route element={<MainLayout isLoading={isLoading} />}>
+    <Route element={<MainLayout />}>
       {routes.map(({ path, Component }) => (
         <Route key={path} path={path} element={<Component />} end />
       ))}
@@ -19,4 +19,5 @@ const AppRouter = ({ isLoading }) => (
     </Route>
   </Routes>
 );
+
 export default AppRouter;

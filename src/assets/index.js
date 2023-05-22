@@ -6,9 +6,9 @@ import gift from './icons/services/gift.svg';
 import wallet from './icons/services/wallet.svg';
 import headphones from './icons/services/headphones.svg';
 import slide from './images/slider/slide.png';
-import categorySkates from './images/category/skates.png';
-import categorySale from './images/category/sale.png';
-import categoryBags from './images/category/bags.png';
+import category1 from './images/category/category1.jpg';
+import category2 from './images/category/category2.jpg';
+import category3 from './images/category/category3.jpg';
 import costume from './images/blog/costume.jpg';
 import skatesSize from './images/blog/skatesSize.jpg';
 import skates from './images/blog/skates.jpg';
@@ -24,9 +24,9 @@ export {
   gift,
   wallet,
   headphones,
-  categorySkates,
-  categorySale,
-  categoryBags,
+  category1,
+  category2,
+  category3,
   costume,
   skatesSize,
   skates,

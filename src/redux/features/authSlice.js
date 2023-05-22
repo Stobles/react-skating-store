@@ -42,6 +42,9 @@ const authSlice = createSlice({
       const id = action.payload;
       state.basket = state.basket.filter((item) => item.id !== id);
     },
+    clearBasket: (state) => {
+      state.basket = [];
+    },
   },
 });
 
@@ -52,6 +55,7 @@ export const {
   setLogout,
   setBasket,
   setBasketProduct,
+  clearBasket,
 } = authSlice.actions;
 
 export default authSlice.reducer;

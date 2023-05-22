@@ -4,7 +4,6 @@ import Message from './Header/Message';
 import Header from './Header';
 import Bar from './Bar';
 import Footer from './Footer';
-import Loader from '../UI/Loader';
 
 const MainLayout = () => {
   const { user } = useSelector((state) => state.auth);

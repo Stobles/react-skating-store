@@ -6,8 +6,9 @@ import * as emailjs from 'emailjs-com';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 import Loader from '@comp/UI/Loader';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import OrderService from '@services/OrderService';
+import { fetchClearBasket } from '@thunks/fetchBasket';
 import styles from './Form.module.scss';
 
 const formSchema = yup.object().shape({
@@ -21,9 +22,13 @@ const initialValues = {
 };
 
 const Form = () => {
+  const dispatch = useDispatch();
   const { user, basket } = useSelector((state) => state.auth);
   const [isLoading, setIsLoading] = useState(false);
-  const totalPrice = basket.reduce((acc, current) => acc + (Number(current.price) * current.amount), 0);
+  const totalPrice = basket.reduce(
+    (acc, current) => acc + Number(current.price) * current.amount,
+    0,
+  );
   const handleFormSubmit = (values, onSubmitProps) => {
     setIsLoading(true);
     emailjs
@@ -36,7 +41,14 @@ const Form = () => {
       .then(() => {
         setIsLoading(false);
         onSubmitProps.resetForm();
-        OrderService.addOrder(basket, user.id, values.name, values.email);
+        const order = {
+          id: Date.now(),
+          name: values.name,
+          email: values.email,
+          products: [...basket],
+        }
+        OrderService.addOrder(order, user.id);
+        dispatch(fetchClearBasket(user.id));
       })
       .catch((e) => {
         toast.error(e.text);

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { BsArrowRight } from 'react-icons/bs';
 import SectionWrapper from '@comp/HOC/SectionWrapper';
 import Image from '@comp/UI/Image';
-import { categoryBags, categorySale, categorySkates } from '@assets';
+import { category1, category2, category3 } from '@assets';
 import styles from './Category.module.scss';
 
 const CategoryCard = ({ title, text, isFull, src }) => (
@@ -31,18 +31,18 @@ const Category = () => {
       <CategoryCard
         title='Коньки и лезвия. Коллекция 2023'
         text='От 3000 руб.'
-        src={categorySkates}
+        src={category3}
         isFull
       />
       <CategoryCard
         title='Коньки и лезвия. Коллекция 2023'
         text='От 3000 руб.'
-        src={categorySale}
+        src={category2}
       />
       <CategoryCard
         title='Коньки и лезвия. Коллекция 2023'
         text='От 3000 руб.'
-        src={categoryBags}
+        src={category1}
       />
     </div>
   );
