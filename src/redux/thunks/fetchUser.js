@@ -22,7 +22,7 @@ export const fetchUserRegistration = ({ firstName, lastName, email, password }) 
     await setDoc(doc(db, 'basket', res.user.uid), {
       products: [],
     });
-    dispatch(setResponse({ status: 200, message: 'Registration success' }));
+    dispatch(setResponse({ status: 200, message: 'Регистрация успешна!' }));
     return res;
   } catch (e) {
     dispatch(setResponse({ status: e.code, message: e.message }));
@@ -67,7 +67,7 @@ export const fetchUserLoginWithGoogle = () => async (dispatch) => {
         user: { id: user.uid, email: user.email, name: user.displayName },
       }),
     );
-    dispatch(setResponse({ status: 200, code: 'Google login success' }));
+    dispatch(setResponse({ status: 200, message: 'Google login success' }));
   } catch (e) {
     dispatch(setResponse({ status: e.code, message: e.message }));
   }

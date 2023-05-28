@@ -1,18 +1,32 @@
+import { AiOutlineInfoCircle } from 'react-icons/ai';
 import {
   BiHomeAlt,
   BiSearchAlt,
   BiShoppingBag,
   BiBookContent,
+  BiSupport,
   BiUser,
 } from 'react-icons/bi';
-import { slide, delivery, gift, wallet, headphones } from '.';
+import { slide1, slide2, slide3, delivery, gift, wallet, headphones } from '.';
+
+export const categories = [
+  { value: 'All', label: 'Все' },
+  { value: 'New', label: 'Новые поступления' },
+  { value: 'Skates', label: 'Коньки' },
+  { value: 'Blades', label: 'Лезвия' },
+  { value: 'Clothes', label: 'Одежда' },
+  { value: 'Bags', label: 'Сумки' },
+  { value: 'Фccessories', label: 'Аксессуары' },
+  { value: 'Protect', label: 'Защита' },
+  { value: 'Other', label: 'Другое' },
+];
 
 export const navLinks = [
-  { name: 'Главная', to: '/' },
-  { name: 'Магазин', to: '/store' },
-  { name: 'Блог', to: '/blog' },
-  { name: 'О нас', to: '/about' },
-  { name: 'Помощь', to: '/help' },
+  { name: 'Главная', to: '/', Icon: BiHomeAlt },
+  { name: 'Магазин', to: '/store', Icon: BiSearchAlt },
+  { name: 'Блог', to: '/blog', Icon: BiBookContent },
+  { name: 'О нас', to: '/about', Icon: AiOutlineInfoCircle },
+  { name: 'Помощь', to: '/help', Icon: BiSupport },
 ];
 
 export const barLinks = [
@@ -47,22 +61,22 @@ export const homeSlides = [
   {
     title: 'Товары от лучших производителей',
     subtitle: 'Новая коллекция 2023',
-    text: 'Скидка 50% на все товары',
-    src: slide,
+    text: 'Скидка 10% по карте',
+    src: slide1,
     productId: '12',
   },
   {
-    title: 'Товары от лучших производителей',
+    title: 'Профессиональная экипировка',
     subtitle: 'Новая коллекция 2023',
-    text: 'Скидка 10% на все товары',
-    src: slide,
+    text: 'Гарантия от 4-х месяцев',
+    src: slide2,
     productId: '13',
   },
   {
-    title: 'Товары от лучших производителей',
+    title: 'Все для фигурного катания',
     subtitle: 'Новая коллекция 2023',
-    text: 'Скидка 20% на все товары',
-    src: slide,
+    text: 'Доставка по всей России',
+    src: slide3,
     productId: '14',
   },
 ];

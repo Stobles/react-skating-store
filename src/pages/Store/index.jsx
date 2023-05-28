@@ -4,66 +4,60 @@ import { useState, useEffect } from 'react';
 import { useFetching } from '@hooks/useFetching';
 import ProductService from '@services/ProductService';
 import { toast } from 'react-toastify';
-import Loader from '@comp/UI/Loader';
 import ProductsFilter from '@comp/Shared/ProductFilter';
-import { useParams } from 'react-router-dom';
-import { usePosts } from '@hooks/usePosts';
 import Pagination from '@comp/UI/Pagination';
+import { categories } from '@assets/constants';
 import styles from './Store.module.scss';
-
-const options = [
-  { value: '', label: 'Все' },
-  { value: 'Blades', label: 'Лезвия' },
-  { value: 'Skates', label: 'Коньки' },
-  { value: 'Tights', label: 'Тайтсы' },
-  { value: 'Cloth', label: 'Одежда' },
-];
+import { useSortedPosts } from '../../hooks/usePosts';
 
 const Store = () => {
-  const { filterProp } = useParams();
+  // const { filterProp } = useParams();
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState({ category: '', sort: '' });
-  const [fetchProducts, isLoading, error] = useFetching(
-    async (limit, item, type = '') => {
-      let response;
-      switch (type) {
-        case 'next':
-          response = await ProductService.getNext(limit, item);
-          if (response.length) {
-            setProducts([...response]);
-            setPage((prev) => prev + 1);
-          }
-          break;
-        case 'prev':
-          response = await ProductService.getPrev(limit, item);
-          if (response.length) {
-            setProducts([...response]);
-            setPage((prev) => prev - 1);
-          }
-          break;
-        default:
-          response = await ProductService.getAll(limit);
-          setProducts([...response.products]);
-          setTotalPages(Math.ceil(response.count / limit));
-          break;
+
+  const [fetchProducts, isProductsLoading, productsError] = useFetching(
+    async (limit) => {
+      let response = await ProductService.getAll(limit, filter.category);
+      if (!response.products.length) {
+        response = await ProductService.getAll(limit);
+        setFilter((prev) => ({ ...prev, category: '' }));
       }
+      setProducts([...response.products]);
+      setTotalPages(Math.ceil(response.count / limit));
     },
   );
-  const sortedAndFilteredProducts = usePosts(
-    products,
-    filter.category,
-    filter.sort,
-  );
+
+  const [fetchProductsPagination, isPaginationLoading, paginationError] = useFetching(async (limit, item, type = '') => {
+    let response;
+    if (type === 'next') {
+      response = await ProductService.getNext(limit, item, filter.category);
+      if (response.length) {
+        setProducts([...response]);
+        setPage((prev) => prev + 1);
+      }
+    } else {
+      response = await ProductService.getPrev(limit, item, filter.category);
+      if (response.length) {
+        setProducts([...response]);
+        setPage((prev) => prev - 1);
+      }
+    }
+  });
+
+  const sortedProducts = useSortedPosts(products, filter.sort);
 
   useEffect(() => {
     fetchProducts(4);
-    if (filterProp) setFilter({ ...filter, category: filterProp });
+  }, [filter.category]);
+
+  useEffect(() => {
+    fetchProducts(4);
   }, []);
 
-  if (error) {
-    toast.error(error);
+  if (productsError || paginationError) {
+    toast.error(productsError || paginationError);
   }
 
   return (
@@ -72,16 +66,21 @@ const Store = () => {
         <div className={styles.Inner}>
           <div className={styles.Filter}>
             <ProductsFilter
-              options={options}
+              options={categories}
               filter={filter}
               setFilter={setFilter}
             />
           </div>
-          <Loader isLoading={isLoading} />
-          <ProductList products={sortedAndFilteredProducts} />
+          <div className={styles.Products}>
+            <ProductList
+              products={sortedProducts}
+              isLoading={isProductsLoading || isPaginationLoading}
+            />
+          </div>
           <div className={styles.Pagination}>
             <Pagination
-              fetchProducts={fetchProducts}
+              fetchProducts={fetchProductsPagination}
+              isLoading={isProductsLoading || isPaginationLoading}
               products={products}
               page={page}
               setPage={setPage}

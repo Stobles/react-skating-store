@@ -1,0 +1,133 @@
+@import '@styles/variables.scss';
+
+$menu-width: 400;
+$menu-background-color: #ffffff;
+$border-color: #CCC;
+
+.Menu{
+  display: none;
+  position: fixed;
+  width: $menu-width + px;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  background-color: $menu-background-color;
+
+  transform: translateX(100%);
+
+  z-index: 15;
+
+  transition: .3s transform ease;
+
+  @media screen and (max-width: $mobile + px) {
+    display: block;
+  }
+
+  @media screen and (max-width: $mobile-mini + px) {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  &.Active{
+    transform: translateX(0%);
+    box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.Inner{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  padding: 40px 30px 55px 50px;
+
+  transition: .3s;
+
+  @media screen and (max-width: $mobile-mini + px) {
+    padding: 30px 20px 45px 50px;
+  }
+}
+
+.Title{
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 54px;
+
+  margin-bottom: 25px;
+
+  @media screen and (max-width: $tablet-mini + px) {
+    font-size: 30px;
+    line-height: 42px;
+  }
+}
+
+.Close{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20px;
+  height: 20px;
+
+  position: absolute;
+  top: 25px;
+  right: 25px;
+
+  .Stick{
+    display: block;
+    width: 125%;
+    height: 2px;
+    background-color: #000000;
+
+    transform-origin: left;
+
+    &:first-child{
+      transform: rotate(45deg);
+    }
+
+    &:last-child{
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.Links{
+  font-family: $font-family-secondary;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 30px;
+
+  gap: 20px;
+
+  .Item{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+  }   
+
+  .Link{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    &.Active{
+      color: $blue-color;
+    }
+  }
+}
+
+.Categories{
+  font-family: $font-family-secondary;
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  max-height: 270px;
+
+  overflow-y: scroll;
+
+  .Link{
+    font-size: 16px;
+  }
+}

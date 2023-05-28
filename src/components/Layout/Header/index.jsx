@@ -4,16 +4,17 @@ import { FiShoppingBag } from 'react-icons/fi';
 import { VscListSelection } from 'react-icons/vsc';
 import { useSelector } from 'react-redux';
 import Logo from '@comp/UI/Logo';
+import { disableBodyScroll } from 'body-scroll-lock';
 import styles from './Header.module.scss';
-import Searchbar from './Searchbar';
 import Navbar from './Navbar';
 
 // TODO: Не рендерить компоненты в адаптивной верстке
 
-const options = [{ value: 'all', label: 'Все' }];
-
-const Header = () => {
+const Header = ({ setIsMenuActive }) => {
   const { user } = useSelector((state) => state.auth);
+  const handleOpenClick = () => {
+    setIsMenuActive(true);
+  };
   return (
     <header className={styles.Header}>
       <div className={styles.Container}>
@@ -33,7 +34,11 @@ const Header = () => {
             <Link to={user ? '/user' : '/auth'} className={styles.Link}>
               <AiOutlineUser size={25} />
             </Link>
-            <button className={styles.Burger} type='button'>
+            <button
+              onClick={handleOpenClick}
+              className={styles.Burger}
+              type='button'
+            >
               <VscListSelection size={25} />
             </button>
           </div>

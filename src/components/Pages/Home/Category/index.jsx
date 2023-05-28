@@ -29,19 +29,19 @@ const Category = () => {
   return (
     <div className={styles.Categoryes}>
       <CategoryCard
-        title='Коньки и лезвия. Коллекция 2023'
-        text='От 3000 руб.'
+        title='Коньки, ботинки, лезвия. Коллекция 2023'
+        text='От 9000 руб.'
         src={category3}
         isFull
       />
       <CategoryCard
-        title='Коньки и лезвия. Коллекция 2023'
-        text='От 3000 руб.'
+        title='Акссесуары и другое'
+        text='Скидки до 40% по карте'
         src={category2}
       />
       <CategoryCard
-        title='Коньки и лезвия. Коллекция 2023'
-        text='От 3000 руб.'
+        title='Одежда для тренировки'
+        text='Скидки до 20%'
         src={category1}
       />
     </div>

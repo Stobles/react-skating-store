@@ -8,29 +8,40 @@ import {
   startAfter,
   orderBy,
   endBefore,
+  where,
+  limitToLast,
 } from 'firebase/firestore';
 import { productsRef, db } from '../configs/firebase.config';
 
 export default class ProductService {
-  static async getAll(lim) {
+  static async getAll(lim, category = '') {
     const products = [];
-    const q = query(productsRef, limit(lim), orderBy('name', 'asc'));
+    let q = query(productsRef, limit(lim), orderBy('name', 'asc'));
+
+    if (category) q = query(q, where('category', '==', category));
+
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((document) => {
       products.push({ id: document.id, ...document.data() });
     });
-    const productsCount = await getCountFromServer(productsRef);
+
+    let qCount = query(productsRef);
+
+    if (category) qCount = query(qCount, where('category', '==', category));
+
+    const productsCount = await getCountFromServer(qCount);
     return { products, count: productsCount.data().count };
   }
 
-  static async getNext(lim, item) {
+  static async getNext(lim, item, category = '') {
     const products = [];
-    const q = query(
+    let q = query(
       productsRef,
       limit(lim),
       orderBy('name', 'asc'),
       startAfter(item.name),
     );
+    if (category) q = query(q, where('category', '==', category));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((document) => {
       products.push({ id: document.id, ...document.data() });
@@ -38,14 +49,15 @@ export default class ProductService {
     return products;
   }
 
-  static async getPrev(lim, item) {
+  static async getPrev(lim, item, category = '') {
     const products = [];
-    const q = query(
+    let q = query(
       productsRef,
-      limit(lim),
+      limitToLast(lim),
       orderBy('name', 'asc'),
-      endBefore(item),
+      endBefore(item.name),
     );
+    if (category) q = query(q, where('category', '==', category));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((document) => {
       products.push({ id: document.id, ...document.data() });

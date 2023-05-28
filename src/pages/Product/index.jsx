@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, ScrollRestoration } from 'react-router-dom';
 import { useFetching } from '@hooks/useFetching';
 import ProductService from '@services/ProductService';
 import { useEffect, useState } from 'react';

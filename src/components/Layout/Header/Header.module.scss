@@ -68,15 +68,16 @@
 }
 
 .Link{
+  display: none;
   height: 25px;
 
-  @media screen and (max-width: $mobile + px) {
-    display: none;
+  @media screen and (min-width: $mobile + px) {
+    display: block;
   }
 }
 
 .Burger{
-  @media screen and (min-width: $tablet + px) {
+  @media screen and (min-width: $mobile + px) {
     display: none;
   }
 }

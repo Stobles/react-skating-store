@@ -28,10 +28,12 @@ const authSlice = createSlice({
     },
     setBasketProduct: (state, action) => {
       const product = action.payload;
-      const isRepeat = state.basket.find((item) => item.id === product.id && item.size === product.size);
+      const isRepeat = state.basket.find(
+        (item) => item.id === product.id && item.size === product.size,
+      );
       if (isRepeat) {
         state.basket = state.basket.map((item) => {
-          if (item.id === product.id && item.size === product.size) item.amount += 1;
+          if (item.id === product.id && item.size === product.size) { item.amount += 1; }
           return item;
         });
         return;

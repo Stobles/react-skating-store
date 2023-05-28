@@ -1,11 +1,9 @@
 import { VscListSelection } from 'react-icons/vsc';
 import { NavLink } from 'react-router-dom';
-import { navLinks } from '@assets/constants';
+import { navLinks, categories } from '@assets/constants';
 import { useEffect, useRef, useState } from 'react';
 import styles from './Navbar.module.scss';
 import CategoryList from '../CategoryList';
-
-const data = [{ filter: 'Blades', name: 'Лезвия' }];
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -32,7 +30,7 @@ const Navbar = () => {
                 toggleMenu ? `${styles.Menu} ${styles.Active}` : styles.Menu
               }
             >
-              <CategoryList data={data} />
+              <CategoryList data={categories} />
             </div>
           </div>
           <nav className={styles.Navbar}>

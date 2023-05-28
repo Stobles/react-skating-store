@@ -1,8 +1,10 @@
 @import '@styles/variables.scss';
 
 .Filters{
+  position: relative;
   display: flex;
   gap: 15px;
+  z-index: 9;
 
   @media screen and (max-width: $mobile + px) {
     flex-direction: column;

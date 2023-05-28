@@ -1,6 +1,11 @@
 import Select from 'react-select';
 import styles from './ProductFilter.module.scss';
 
+const sorting = [
+  { value: 'name', label: 'По названию' },
+  { value: 'category', label: 'По категории' },
+];
+
 const categoryStylesSelect = {
   control: (style) => ({
     ...style,
@@ -18,23 +23,20 @@ const filterStylesSelect = {
   }),
 };
 
-const ProductsFilter = ({ options, filter, setFilter }) => (
+const ProductsFilter = ({ options, setFilter }) => (
   <div className={styles.Filters}>
     <Select
       placeholder='Категория'
       options={options}
       styles={categoryStylesSelect}
-      onChange={(e) => setFilter({ ...filter, category: e.value })}
+      onChange={(e) => setFilter((filter) => ({ ...filter, category: e.value }))}
     />
     <Select
       placeholder='Сортировка'
-      options={[
-        { value: '', label: 'Без сортировки' },
-        { value: 'category', label: 'По категории' },
-        { value: 'name', label: 'По названию' },
-      ]}
+      defaultValue={sorting[0] || 'Select'}
+      options={sorting}
       styles={filterStylesSelect}
-      onChange={(selectedOption) => setFilter({ ...filter, sort: selectedOption.value })}
+      onChange={(e) => setFilter((filter) => ({ ...filter, sort: e.value }))}
     />
   </div>
 );

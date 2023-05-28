@@ -5,7 +5,9 @@ import delivery from './icons/services/delivery.svg';
 import gift from './icons/services/gift.svg';
 import wallet from './icons/services/wallet.svg';
 import headphones from './icons/services/headphones.svg';
-import slide from './images/slider/slide.png';
+import slide1 from './images/slider/slide1.png';
+import slide2 from './images/slider/slide2.png';
+import slide3 from './images/slider/slide3.png';
 import category1 from './images/category/category1.jpg';
 import category2 from './images/category/category2.jpg';
 import category3 from './images/category/category3.jpg';
@@ -19,7 +21,9 @@ export {
   logo,
   cart,
   user,
-  slide,
+  slide1,
+  slide2,
+  slide3,
   delivery,
   gift,
   wallet,

@@ -51,6 +51,7 @@
 
 .Menu{
   $menu-paragraph-height: 41;
+  $margin-top: 5;
 
   position: absolute;
   max-height: 0;
@@ -59,12 +60,12 @@
   left: 0;
   width: 100%;
   z-index: 10;
-  margin-top: 5px;
+  margin-top: $margin-top + px;
   transition: .5s max-height ease-in-out;
   box-shadow: 0px 10px 15px 2px rgba(0,0,0,0.1);
 
   &.Active{
-    max-height: $menu-paragraph-height * 8 + px;
+    max-height: $menu-paragraph-height * 10 + $margin-top + px;
   }
 }
 

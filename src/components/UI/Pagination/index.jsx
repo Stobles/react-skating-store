@@ -1,33 +1,46 @@
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 import styles from './Pagination.module.scss';
 
-const Pagination = ({ fetchProducts, products, page, totalPages }) => {
+const Pagination = ({
+  fetchProducts,
+  isLoading,
+  products,
+  page,
+  totalPages,
+}) => {
   const isFirstPage = page === 1;
   const isLastPage = page === totalPages;
-  const handleNextClick = (item) => {
-    fetchProducts(4, item, 'next');
+  const handleClick = (item, type) => {
+    fetchProducts(4, item, type);
   };
 
-  const handlePrevClick = (item) => {
-    fetchProducts(4, item, 'prev');
-  };
   return (
     <div className={styles.Pagination}>
-      <div>Страница {page} из 100</div>
+      <div>
+        Страница {page} из {totalPages}
+      </div>
       <div className={styles.Buttons}>
         <button
-          onClick={() => handlePrevClick(products[0])}
+          onClick={() => handleClick(products[0], 'prev')}
           type='button'
-          disabled={isFirstPage}
-          className={isFirstPage ? `${styles.Button} ${styles.Disabled}` : styles.Button}
+          disabled={isFirstPage || isLoading}
+          className={
+            isFirstPage || isLoading
+              ? `${styles.Button} ${styles.Disabled}`
+              : styles.Button
+          }
         >
           <AiOutlineArrowLeft size={18} />
         </button>
         <button
-          onClick={() => handleNextClick(products[products.length - 1])}
+          onClick={() => handleClick(products[products.length - 1], 'next')}
           type='button'
-          disabled={isLastPage}
-          className={isLastPage ? `${styles.Button} ${styles.Disabled}` : styles.Button}
+          disabled={isLastPage || isLoading}
+          className={
+            isLastPage || isLoading
+              ? `${styles.Button} ${styles.Disabled}`
+              : styles.Button
+          }
         >
           <AiOutlineArrowRight size={18} />
         </button>
