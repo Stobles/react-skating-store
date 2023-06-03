@@ -46,7 +46,7 @@ const Form = () => {
           name: values.name,
           email: values.email,
           products: [...basket],
-        }
+        };
         OrderService.addOrder(order, user.id);
         dispatch(fetchClearBasket(user.id));
       })

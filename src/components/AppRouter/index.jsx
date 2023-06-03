@@ -1,5 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
-import { authRoutes, routes } from '../../routes';
+import {
+  authRoutes,
+  routes,
+} from '../../routes';
 import { Login } from '../../pages';
 import MainLayout from '../Layout';
 import PrivateRoutes from './PrivateRoutes';

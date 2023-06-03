@@ -10,7 +10,6 @@ const ABOUT_ROUTE = '/about';
 const BLOG_ROUTE = '/blog';
 const HELP_ROUTE = '/help';
 
-// для авторизованного: корзина, страница пользователя.
 export const routes = [
   { path: HOME_ROUTE, Component: Home },
   { path: ABOUT_ROUTE, Component: About },
