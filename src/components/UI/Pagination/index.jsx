@@ -7,13 +7,10 @@ const Pagination = ({
   products,
   page,
   totalPages,
+  limit
 }) => {
   const isFirstPage = page === 1;
   const isLastPage = page === totalPages;
-  const handleClick = (item, type) => {
-    fetchProducts(4, item, type);
-  };
-
   return (
     <div className={styles.Pagination}>
       <div>
@@ -21,7 +18,7 @@ const Pagination = ({
       </div>
       <div className={styles.Buttons}>
         <button
-          onClick={() => handleClick(products[0], 'prev')}
+          onClick={() => fetchProducts(limit, products[0], 'prev')}
           type='button'
           disabled={isFirstPage || isLoading}
           className={
@@ -33,7 +30,7 @@ const Pagination = ({
           <AiOutlineArrowLeft size={18} />
         </button>
         <button
-          onClick={() => handleClick(products[products.length - 1], 'next')}
+          onClick={() => fetchProducts(limit, products[products.length - 1], 'next')}
           type='button'
           disabled={isLastPage || isLoading}
           className={

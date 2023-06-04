@@ -12,14 +12,15 @@ import { useSortedPosts } from '../../hooks/usePosts';
 
 const Store = () => {
   // const { filterProp } = useParams();
+  const limit = 8;
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState({ category: '', sort: '' });
 
   const [fetchProducts, isProductsLoading, productsError] = useFetching(
-    async (limit) => {
-      let response = await ProductService.getAll(limit, filter.category);
+    async (lim) => {
+      let response = await ProductService.getAll(lim, filter.category);
       if (!response.products.length) {
         response = await ProductService.getAll(limit);
         setFilter((prev) => ({ ...prev, category: '' }));
@@ -29,16 +30,16 @@ const Store = () => {
     },
   );
 
-  const [fetchProductsPagination, isPaginationLoading, paginationError] = useFetching(async (limit, item, type = '') => {
+  const [fetchProductsPagination, isPaginationLoading, paginationError] = useFetching(async (lim, item, type = '') => {
     let response;
     if (type === 'next') {
-      response = await ProductService.getNext(limit, item, filter.category);
+      response = await ProductService.getNext(lim, item, filter.category);
       if (response.length) {
         setProducts([...response]);
         setPage((prev) => prev + 1);
       }
     } else {
-      response = await ProductService.getPrev(limit, item, filter.category);
+      response = await ProductService.getPrev(lim, item, filter.category);
       if (response.length) {
         setProducts([...response]);
         setPage((prev) => prev - 1);
@@ -49,11 +50,11 @@ const Store = () => {
   const sortedProducts = useSortedPosts(products, filter.sort);
 
   useEffect(() => {
-    fetchProducts(4);
+    fetchProducts(limit);
   }, [filter.category]);
 
   useEffect(() => {
-    fetchProducts(4);
+    fetchProducts(limit);
   }, []);
 
   if (productsError || paginationError) {
@@ -85,6 +86,7 @@ const Store = () => {
               page={page}
               setPage={setPage}
               totalPages={totalPages}
+              limit={limit}
             />
           </div>
         </div>
