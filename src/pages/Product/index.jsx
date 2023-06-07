@@ -46,6 +46,7 @@ const Product = () => {
       productBasket.size = size;
       productBasket.amount = amount;
       dispatch(fetchAddToBasket(productBasket, user.id));
+      toast.success('Товар добавлен в корзину');
     } else {
       toast.warning('Выберите размер');
     }

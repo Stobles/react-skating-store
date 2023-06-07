@@ -12,11 +12,12 @@ import { slide1, slide2, slide3, delivery, gift, wallet, headphones } from '.';
 export const categories = [
   { value: 'All', label: 'Все' },
   { value: 'New', label: 'Новые поступления' },
+  { value: 'Shoes', label: 'Ботинки' },
   { value: 'Skates', label: 'Коньки' },
   { value: 'Blades', label: 'Лезвия' },
   { value: 'Clothes', label: 'Одежда' },
   { value: 'Bags', label: 'Сумки' },
-  { value: 'Фccessories', label: 'Аксессуары' },
+  { value: 'Accessories', label: 'Аксессуары' },
   { value: 'Protect', label: 'Защита' },
   { value: 'Other', label: 'Другое' },
 ];

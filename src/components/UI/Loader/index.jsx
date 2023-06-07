@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { ClipLoader } from 'react-spinners';
 import { CSSTransition } from 'react-transition-group';
 import styles from './Loader.module.scss';

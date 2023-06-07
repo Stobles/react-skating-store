@@ -25,8 +25,7 @@ const Products = () => {
   }
   return (
     <div className={styles.Products}>
-      <Loader isLoading={isLoading} />
-      <ProductList products={products} />
+      <ProductList products={products} isLoading={isLoading} />
     </div>
   );
 };
