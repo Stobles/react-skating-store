@@ -18,6 +18,7 @@ const filterStylesSelect = {
   control: (style) => ({
     ...style,
     width: '220px',
+    height: '30px',
     cursor: 'pointer',
     outline: 'none',
   }),

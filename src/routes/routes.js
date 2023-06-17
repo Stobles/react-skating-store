@@ -1,4 +1,4 @@
-import { About, Basket, Blog, Help, Home, Product, Store, User } from './pages';
+import { About, Basket, Blog, Help, Home, Product, Store, User } from '../pages';
 
 const HOME_ROUTE = '/';
 const USER_ROUTE = '/user';

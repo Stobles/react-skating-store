@@ -1,0 +1,56 @@
+
+$modal-background-color: rgba(0, 0, 0, 0.3);
+
+.Modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 15;
+
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $modal-background-color;
+
+  transition: .3s opacity ease;
+  opacity: 0;
+  pointer-events: none;
+
+  &.Active{
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.Content{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+  padding: 20px;
+  background-color: #fff;
+
+  border-radius: 10px;
+}
+
+.Title{
+  font-size: 18px;
+  margin: 0;
+}
+
+.Header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Close{
+  position: relative;
+  cursor: pointer;
+}

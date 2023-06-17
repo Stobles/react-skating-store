@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Header from './Header';
@@ -12,6 +12,7 @@ const MainLayout = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
   return (
     <div className='wrapper'>
+      <ScrollRestoration />
       {!user && <Message />}
       <Header setIsMenuActive={setIsMenuActive} />
       <Menu

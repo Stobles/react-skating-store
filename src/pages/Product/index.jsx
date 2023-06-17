@@ -1,6 +1,7 @@
-import { useParams, ScrollRestoration } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useFetching } from '@hooks/useFetching';
 import ProductService from '@services/ProductService';
+import { BsArrowLeft } from 'react-icons/bs';
 import { useEffect, useState } from 'react';
 import Image from '@comp/UI/Image';
 import Button from '@comp/UI/Button';
@@ -21,6 +22,7 @@ const sizeStylesSelect = {
 };
 
 const Product = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
   const { user } = useSelector((state) => state.auth);
@@ -31,25 +33,34 @@ const Product = () => {
   const [fetchProduct, isLoading, error] = useFetching(async (uid) => {
     const response = await ProductService.getById(uid);
     setProduct(response);
-    setSizeOptions([...response.sizes]);
-    console.log(sizeOptions);
+    if (response.sizes) setSizeOptions([...response.sizes]);
   });
 
   useEffect(() => {
     fetchProduct(id);
   }, []);
 
-  const handleClick = () => {
-    if (size) {
+  const handleAddClick = () => {
+    if (!product?.sizes) {
       const { date, features, ...productBasket } = product;
       productBasket.id = id;
-      productBasket.size = size;
       productBasket.amount = amount;
+      dispatch(fetchAddToBasket(productBasket, user.id));
+      toast.success('Товар добавлен в корзину');
+    } else if (product?.sizes && size) {
+      const { date, features, ...productBasket } = product;
+      productBasket.id = id;
+      productBasket.amount = amount;
+      productBasket.size = size;
       dispatch(fetchAddToBasket(productBasket, user.id));
       toast.success('Товар добавлен в корзину');
     } else {
       toast.warning('Выберите размер');
     }
+  };
+
+  const handleBackClick = () => {
+    navigate('/store');
   };
 
   if (error) {
@@ -58,6 +69,10 @@ const Product = () => {
 
   return (
     <div className={styles.Container}>
+      <button onClick={handleBackClick} type='button' className={styles.Back}>
+        <BsArrowLeft size={28} />
+        НАЗАД
+      </button>
       <div className={styles.Inner}>
         <div className={styles.ImageWrapper}>
           <Image
@@ -80,33 +95,38 @@ const Product = () => {
           >
             {product?.category}
           </p>
-          <div className={styles.Select}>
-            <Select
-              placeholder='Выбрать размер...'
-              styles={sizeStylesSelect}
-              options={sizeOptions}
-              onChange={(choice) => setSize(choice.value)}
-            />
-          </div>
+          {product?.sizes && (
+            <div className={styles.Select}>
+              <Select
+                placeholder='Выбрать размер...'
+                styles={sizeStylesSelect}
+                options={sizeOptions}
+                onChange={(choice) => setSize(choice.value)}
+              />
+            </div>
+          )}
           <div className={styles.Prices}>
             <span
               className={
                 !isLoading ? styles.New : `${styles.New} ${styles.Plug}`
               }
             >
-              {product?.price} &#8381;
+              {product.sale
+                ? product.price - product.price * (product.sale / 100)
+                : product.price}{' '}
+              &#8381;
             </span>
-            {product?.oldPrice !== 0 && (
+            {product?.sale && (
               <span
                 className={
                   !isLoading ? styles.Old : `${styles.Old} ${styles.Plug}`
                 }
               >
-                {product?.oldPrice} &#8381;
+                {product?.price} &#8381;
               </span>
             )}
           </div>
-          <Button onClick={handleClick}>Добавить в корзину</Button>
+          <Button onClick={handleAddClick}>Добавить в корзину</Button>
         </div>
       </div>
     </div>

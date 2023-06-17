@@ -13,6 +13,7 @@ import { useSortedPosts } from '../../hooks/usePosts';
 const Store = () => {
   // const { filterProp } = useParams();
   const limit = 8;
+  const [quantity, setQuantity] = useState(0);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [products, setProducts] = useState([]);
@@ -20,13 +21,14 @@ const Store = () => {
 
   const [fetchProducts, isProductsLoading, productsError] = useFetching(
     async (lim) => {
-      let response = await ProductService.getAll(lim, filter.category);
+      const response = filter.category === 'All' ? await ProductService.getAll(lim) : await ProductService.getAll(lim, filter.category);
       if (!response.products.length) {
-        response = await ProductService.getAll(limit);
-        setFilter((prev) => ({ ...prev, category: '' }));
+        setProducts([]);
+      } else {
+        setProducts([...response.products]);
+        setTotalPages(Math.ceil(response.count / limit));
       }
-      setProducts([...response.products]);
-      setTotalPages(Math.ceil(response.count / limit));
+      setQuantity(response.count);
     },
   );
 
@@ -64,6 +66,10 @@ const Store = () => {
   return (
     <div className={styles.Section}>
       <div className={styles.Container}>
+        <div className={styles.Header}>
+          <h1 className={styles.Title}>Магазин</h1>
+          <div className={styles.Quantity}>Всего товаров - {quantity}</div>
+        </div>
         <div className={styles.Inner}>
           <div className={styles.Filter}>
             <ProductsFilter

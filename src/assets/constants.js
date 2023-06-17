@@ -11,7 +11,6 @@ import { slide1, slide2, slide3, delivery, gift, wallet, headphones } from '.';
 
 export const categories = [
   { value: 'All', label: 'Все' },
-  { value: 'New', label: 'Новые поступления' },
   { value: 'Shoes', label: 'Ботинки' },
   { value: 'Skates', label: 'Коньки' },
   { value: 'Blades', label: 'Лезвия' },
@@ -19,7 +18,6 @@ export const categories = [
   { value: 'Bags', label: 'Сумки' },
   { value: 'Accessories', label: 'Аксессуары' },
   { value: 'Protect', label: 'Защита' },
-  { value: 'Other', label: 'Другое' },
 ];
 
 export const navLinks = [
@@ -64,21 +62,21 @@ export const homeSlides = [
     subtitle: 'Новая коллекция 2023',
     text: 'Скидка 10% по карте',
     src: slide1,
-    productId: '12',
+    productId: 'RVLyb3HhJJMW8ASaeoYJ',
   },
   {
     title: 'Профессиональная экипировка',
     subtitle: 'Новая коллекция 2023',
     text: 'Гарантия от 4-х месяцев',
     src: slide2,
-    productId: '13',
+    productId: 'N6OGGQfdYc9tutSRy53m',
   },
   {
     title: 'Все для фигурного катания',
     subtitle: 'Новая коллекция 2023',
     text: 'Доставка по всей России',
     src: slide3,
-    productId: '14',
+    productId: 'm2NzCwKRzQQgC2at5ucx',
   },
 ];
 
