@@ -12,7 +12,7 @@ const BasketProduct = ({ product }) => (
     <div className={styles.ImageWrapper}>
       <Image
         className={styles.Image}
-        src={`src/assets/images/products/${product.picture}`}
+        src={`./assets/images/products/${product.picture}`}
         alt='basket_product_image'
       />
     </div>
