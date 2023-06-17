@@ -77,7 +77,7 @@ const Product = () => {
         <div className={styles.ImageWrapper}>
           <Image
             className={styles.Image}
-            src={`../src/assets/images/products/${product?.picture}`}
+            src={`./assets/images/products/${product?.picture}`}
           />
         </div>
         <div className={styles.Content}>

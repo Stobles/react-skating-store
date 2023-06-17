@@ -31,7 +31,7 @@ const ProductCard = ({
       )}
       <Image
         className={styles.Image}
-        src={`/src/assets/images/products/${product.picture}`}
+        src={`./assets/images/products/${product.picture}`}
       />
       <div className={styles.Buttons}>
         <button
