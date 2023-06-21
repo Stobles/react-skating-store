@@ -11,7 +11,6 @@ import slide3 from './images/slider/slide3.png';
 import category1 from './images/category/category1.jpg';
 import category2 from './images/category/category2.jpg';
 import category3 from './images/category/category3.jpg';
-import costume from './images/blog/costume.jpg';
 import skatesSize from './images/blog/skatesSize.jpg';
 import skates from './images/blog/skates.jpg';
 import skatesCare from './images/blog/skatesCare.jpg';
@@ -31,7 +30,6 @@ export {
   category1,
   category2,
   category3,
-  costume,
   skatesSize,
   skates,
   skatesCare,

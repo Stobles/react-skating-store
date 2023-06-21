@@ -1,6 +1,7 @@
-import Button from '@comp/UI/Button';
+import Button from '../../components/UI/Button';
 import { useDispatch } from 'react-redux';
 import { setLogout } from '../../redux/features/authSlice';
+
 import styles from './User.module.scss';
 
 const User = () => {

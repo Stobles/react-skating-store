@@ -7,7 +7,7 @@ const Pagination = ({
   products,
   page,
   totalPages,
-  limit
+  limit,
 }) => {
   const isFirstPage = page === 1;
   const isLastPage = page === totalPages;

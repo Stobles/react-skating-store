@@ -4,9 +4,10 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 import MainLayout from '@comp/Layout';
-import { authRoutes, routes } from '../routes';
-import { Login } from '../../pages';
+import { authRoutes, routes, userLayoutRoutes } from '../routes';
+import { Login, User } from '../../pages';
 import PrivateRoutes from './PrivateRoutes';
+import UserLayout from '@comp/Layout/UserLayout';
 
 const AppRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -18,6 +19,11 @@ const AppRouter = createBrowserRouter(
         ))}
         <Route element={<PrivateRoutes />}>
           {authRoutes.map(({ path, Component }) => (
+            <Route key={path} path={path} element={<Component />} end />
+          ))}
+        </Route>
+        <Route element={<UserLayout />}>
+          {userLayoutRoutes.map(({ path, Component }) => (
             <Route key={path} path={path} element={<Component />} end />
           ))}
         </Route>

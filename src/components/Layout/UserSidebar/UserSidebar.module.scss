@@ -1,0 +1,26 @@
+@import '@styles/variables.scss';
+
+.Sidebar{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 31px 12px 22px 15px;
+  background-color: $background-color;
+
+  .Link{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 16px 37px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+
+    &.Active{
+      color: $blue-color;
+      background-color: #fff;
+    }
+  }
+}

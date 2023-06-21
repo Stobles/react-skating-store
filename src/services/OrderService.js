@@ -3,16 +3,23 @@ import {
   getDoc,
   doc,
   setDoc,
+  getCountFromServer,
 } from 'firebase/firestore';
 import { db } from '../configs/firebase.config';
 
 export default class OrderService {
   static async getAll(id) {
-    const basketUserRef = doc(db, 'basket', id);
-    const q = query(basketUserRef);
+    const orders = [];
+    const ordersUserRef = doc(db, 'orders', id);
+    const q = query(ordersUserRef);
+    console.log('lf');
     const querySnapshot = await getDoc(q);
+    querySnapshot.forEach((document) => {
+      orders.push({ id: document.id, ...document.data() });
+    });
+    console.log('lf');
     const res = querySnapshot.data();
-    return res.products;
+    return { orders: res.orders };
   }
 
   static async addOrder(order, id) {

@@ -6,6 +6,7 @@ import Store from './Store';
 import Product from './Product';
 import Basket from './Basket';
 import User from './User';
+import Orders from './Orders';
 import Login from './Login';
 
-export { Home, About, Blog, Help, Store, Product, Basket, User, Login };
+export { Home, About, Blog, Help, Store, Product, Basket, User, Orders, Login };

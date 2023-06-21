@@ -53,9 +53,9 @@ const initialValuesLogin = {
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const [pageType, setPageType] = useState('register');
-  const navigate = useNavigate();
   const isLogin = pageType === 'login';
   const isRegister = pageType === 'register';
 
@@ -89,8 +89,6 @@ const Login = () => {
       navigate('/');
     }
   }, [user]);
-
-  useToastifyMessage();
 
   return (
     <div className={styles.Login}>

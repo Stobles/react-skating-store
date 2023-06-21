@@ -1,7 +1,8 @@
-import { About, Basket, Blog, Help, Home, Product, Store, User } from '../pages';
+import { About, Basket, Blog, Help, Home, Orders, Product, Store, User } from '../pages';
 
 const HOME_ROUTE = '/';
 const USER_ROUTE = '/user';
+const ORDERS_ROUTE = '/user/orders';
 const BASKET_ROUTE = '/cart';
 const STORE_ROUTE = '/store';
 const STORE_FILTER_ROUTE = '/store/:filterProp';
@@ -22,5 +23,9 @@ export const routes = [
 
 export const authRoutes = [
   { path: BASKET_ROUTE, Component: Basket },
-  { path: USER_ROUTE, Component: User },
 ];
+
+export const userLayoutRoutes = [
+  { path: USER_ROUTE, Component: User },
+  { path: ORDERS_ROUTE, Component: Orders },
+]

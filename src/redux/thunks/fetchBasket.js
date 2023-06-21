@@ -1,10 +1,10 @@
-import BasketService from '@services/BasketService';
-import { setResponse } from '../features/errorSlice';
+import BasketService from "@services/BasketService";
+import { setResponse } from "../features/errorSlice";
 import {
   setBasket,
   setBasketProduct,
   clearBasket,
-} from '../features/authSlice';
+} from "../features/authSlice";
 
 export const fetchAllBasket = (id) => async (dispatch) => {
   try {
