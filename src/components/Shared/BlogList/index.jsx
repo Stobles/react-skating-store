@@ -5,7 +5,7 @@ import styles from './BlogList.module.scss';
 
 const BlogCard = ({ src, isList, category, description, blogId, date, title }) => (
   <li>
-    <Link className={isList ? `${styles.Card} ${styles.List}` : styles.Card} to={`/blog/${blogId}`}>
+    <Link className={isList ? `${styles.Card} ${styles.List}` : styles.Card} to='/'>
       <div className={isList ? `${styles.ImageWrapper} ${styles.List}` : styles.ImageWrapper}>
         <Image className={styles.Image} src={`./assets/images/blog/${blogId}/${src}`} alt='blog_img' />
       </div>
