@@ -5,9 +5,9 @@
   "homepage": "https://stobles.github.io/react-skating-store",
   "scripts": {
     "dev": "vite",
-    "predeploy": "vite build",
-    "deploy": "gh-pages -d build",
-    "preview": "vite preview"
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
