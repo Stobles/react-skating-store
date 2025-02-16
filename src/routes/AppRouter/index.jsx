@@ -11,7 +11,7 @@ import PrivateRoutes from "./PrivateRoutes";
 
 const AppRouter = createBrowserRouter(
   createRoutesFromElements(
-    <Route path={process.env.VITE_BASENAME}>
+    <Route path="/">
       <Route path="/auth" element={<Login />} end />
       <Route element={<MainLayout />}>
         {routes.map(({ path, Component }) => (
