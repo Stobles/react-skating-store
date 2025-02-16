@@ -5,13 +5,22 @@ import styles from "./Image.module.scss";
 
 const Image = ({ className, src, alt }) => {
   const imageLoaded = useImagePreload(src);
+
   return (
-    <img
-      draggable="false"
-      className={className || styles.Image}
-      src={src}
-      alt={alt}
-    />
+    <>
+      {imageLoaded ? (
+        <img
+          draggable="false"
+          className={className || styles.Image}
+          src={src}
+          alt={alt}
+        />
+      ) : (
+        <div className={styles.Loader}>
+          <ClipLoader />
+        </div>
+      )}
+    </>
   );
 };
 export default Image;
