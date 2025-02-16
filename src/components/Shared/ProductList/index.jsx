@@ -1,14 +1,14 @@
-import { BsBagPlus } from 'react-icons/bs';
-import { AiOutlineEye } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
-import Select from 'react-select';
-import Image from '@comp/UI/Image';
-import Loader from '@comp/UI/Loader';
-import Modal from '@comp/UI/Modal';
-import Button from '@comp/UI/Button';
-import { toast } from 'react-toastify';
-import styles from './ProductList.module.scss';
-import { dateDifference } from '../../../utils/date';
+import { BsBagPlus } from "react-icons/bs";
+import { AiOutlineEye } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import Select from "react-select";
+import Image from "@comp/UI/Image";
+import Loader from "@comp/UI/Loader";
+import Modal from "@comp/UI/Modal";
+import Button from "@comp/UI/Button";
+import { toast } from "react-toastify";
+import styles from "./ProductList.module.scss";
+import { dateDifference } from "../../../utils/date";
 
 const ProductCard = ({
   product,
@@ -26,22 +26,22 @@ const ProductCard = ({
               : `${styles.Pin} ${styles.New}`
           }
         >
-          {product.sale ? `-${product.sale}%` : 'New'}
+          {product.sale ? `-${product.sale}%` : "New"}
         </span>
       )}
       <Image
         className={styles.Image}
-        src={`./assets/images/products/${product.picture}`}
+        src={`/images/products/${product.picture}`}
       />
       <div className={styles.Buttons}>
         <button
-          type='button'
+          type="button"
           className={styles.Button}
           onClick={() => {
             setCurrentProduct(product);
             if (!product?.sizes) {
               addToBasket(product);
-              toast.success('Товар успешно добавлен в корзину');
+              toast.success("Товар успешно добавлен в корзину");
             } else {
               setIsVisible(true);
             }
@@ -63,7 +63,7 @@ const ProductCard = ({
         <span className={styles.New}>
           {product.sale
             ? product.price - product.price * (product.sale / 100)
-            : product.price}{' '}
+            : product.price}{" "}
           &#8381;
         </span>
         {product.sale && (
@@ -87,7 +87,7 @@ const ProductList = ({
 }) => (
   <div className={styles.Cards}>
     <Modal
-      title='Выберите размер'
+      title="Выберите размер"
       isVisible={isVisible}
       setIsVisible={setIsVisible}
     >
@@ -102,9 +102,9 @@ const ProductList = ({
           onClick={() => {
             if (currentSize) {
               addToBasket(currentProduct, currentSize);
-              toast.success('Товар добавлен в корзину');
+              toast.success("Товар добавлен в корзину");
             } else {
-              toast.warning('Выберите размер');
+              toast.warning("Выберите размер");
             }
           }}
         >

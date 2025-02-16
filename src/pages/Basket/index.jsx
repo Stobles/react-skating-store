@@ -1,19 +1,19 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-import Image from '@comp/UI/Image';
-import Form from '@comp/Pages/Basket/Form';
-import Button from '@comp/UI/Button';
-import styles from './Basket.module.scss';
-import { fetchClearBasket } from '../../redux/thunks/fetchBasket';
+import Image from "@comp/UI/Image";
+import Form from "@comp/Pages/Basket/Form";
+import Button from "@comp/UI/Button";
+import styles from "./Basket.module.scss";
+import { fetchClearBasket } from "../../redux/thunks/fetchBasket";
 
 const BasketProduct = ({ product }) => (
   <div className={styles.Product}>
     <div className={styles.ImageWrapper}>
       <Image
         className={styles.Image}
-        src={`./assets/images/products/${product.picture}`}
-        alt='basket_product_image'
+        src={`/images/products/${product.picture}`}
+        alt="basket_product_image"
       />
     </div>
     <div>

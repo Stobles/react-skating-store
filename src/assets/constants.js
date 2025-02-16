@@ -24,8 +24,6 @@ export const navLinks = [
   { name: "Главная", to: "/", Icon: BiHomeAlt },
   { name: "Магазин", to: "/store", Icon: BiSearchAlt },
   { name: "Блог", to: "/blog", Icon: BiBookContent },
-  { name: "О нас", to: "/about", Icon: AiOutlineInfoCircle },
-  { name: "Помощь", to: "/help", Icon: BiSupport },
 ];
 
 export const barLinks = [

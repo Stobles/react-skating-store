@@ -1,23 +1,23 @@
-import { useParams, useNavigate } from 'react-router-dom';
-import { useFetching } from '@hooks/useFetching';
-import ProductService from '@services/ProductService';
-import { BsArrowLeft } from 'react-icons/bs';
-import { useEffect, useState } from 'react';
-import Image from '@comp/UI/Image';
-import Button from '@comp/UI/Button';
-import Select from 'react-select';
-import { toast } from 'react-toastify';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchAddToBasket } from '@thunks/fetchBasket';
+import { useParams, useNavigate } from "react-router-dom";
+import { useFetching } from "@hooks/useFetching";
+import ProductService from "@services/ProductService";
+import { BsArrowLeft } from "react-icons/bs";
+import { useEffect, useState } from "react";
+import Image from "@comp/UI/Image";
+import Button from "@comp/UI/Button";
+import Select from "react-select";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAddToBasket } from "@thunks/fetchBasket";
 
-import styles from './Product.module.scss';
+import styles from "./Product.module.scss";
 
 const sizeStylesSelect = {
   control: (style) => ({
     ...style,
-    width: '220px',
-    cursor: 'pointer',
-    outline: 'none',
+    width: "220px",
+    cursor: "pointer",
+    outline: "none",
   }),
 };
 
@@ -26,9 +26,9 @@ const Product = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { user } = useSelector((state) => state.auth);
-  const [product, setProduct] = useState('');
+  const [product, setProduct] = useState("");
   const [amount, setAmount] = useState(1);
-  const [size, setSize] = useState('');
+  const [size, setSize] = useState("");
   const [sizeOptions, setSizeOptions] = useState([]);
   const [fetchProduct, isLoading, error] = useFetching(async (uid) => {
     const response = await ProductService.getById(uid);
@@ -46,21 +46,21 @@ const Product = () => {
       productBasket.id = id;
       productBasket.amount = amount;
       dispatch(fetchAddToBasket(productBasket, user.id));
-      toast.success('Товар добавлен в корзину');
+      toast.success("Товар добавлен в корзину");
     } else if (product?.sizes && size) {
       const { date, features, ...productBasket } = product;
       productBasket.id = id;
       productBasket.amount = amount;
       productBasket.size = size;
       dispatch(fetchAddToBasket(productBasket, user.id));
-      toast.success('Товар добавлен в корзину');
+      toast.success("Товар добавлен в корзину");
     } else {
-      toast.warning('Выберите размер');
+      toast.warning("Выберите размер");
     }
   };
 
   const handleBackClick = () => {
-    navigate('/store');
+    navigate("/store");
   };
 
   if (error) {
@@ -69,7 +69,7 @@ const Product = () => {
 
   return (
     <div className={styles.Container}>
-      <button onClick={handleBackClick} type='button' className={styles.Back}>
+      <button onClick={handleBackClick} type="button" className={styles.Back}>
         <BsArrowLeft size={28} />
         НАЗАД
       </button>
@@ -77,7 +77,7 @@ const Product = () => {
         <div className={styles.ImageWrapper}>
           <Image
             className={styles.Image}
-            src={`./assets/images/products/${product?.picture}`}
+            src={`/images/products/${product?.picture}`}
           />
         </div>
         <div className={styles.Content}>
@@ -98,7 +98,7 @@ const Product = () => {
           {product?.sizes && (
             <div className={styles.Select}>
               <Select
-                placeholder='Выбрать размер...'
+                placeholder="Выбрать размер..."
                 styles={sizeStylesSelect}
                 options={sizeOptions}
                 onChange={(choice) => setSize(choice.value)}
@@ -113,7 +113,7 @@ const Product = () => {
             >
               {product.sale
                 ? product.price - product.price * (product.sale / 100)
-                : product.price}{' '}
+                : product.price}{" "}
               &#8381;
             </span>
             {product?.sale && (
