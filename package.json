@@ -2,9 +2,11 @@
   "name": "skating-store",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://stobles.github.io/react-skating-store",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "predeploy": "vite build",
+    "deploy": "gh-pages -d build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -16,6 +18,7 @@
     "emailjs-com": "^3.2.0",
     "firebase": "^9.21.0",
     "formik": "^2.2.9",
+    "gh-pages": "^6.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
